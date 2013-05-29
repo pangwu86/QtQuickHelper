@@ -1,0 +1,4 @@
+nutz-qtquick
+============
+
+qml plugins
