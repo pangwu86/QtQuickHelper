@@ -15,7 +15,6 @@ Rectangle {
     property string pwpad_input_val: "94518" // 真正的密码
     property string pwpad_input_color: "#7c7c7c"
     property string pwpad_input_color_red: "#AA0000"
-    property variant pwpad_func_onok
     function init_state() {
         pwpad_btn_ava = true
         pwpad_input_do = false
@@ -25,12 +24,21 @@ Rectangle {
     function err_state() {
         id_pwpad_input_text.text = pwpad_input_tip_err
         after_input_state()
+        if (func_cancel != null) {
+            Util.z.log(log_nm, "pwpad_func_cancel is run")
+            func_cancel()
+        } else {
+            Util.z.log(log_nm, "pwpad_func_cancel is empty")
+        }
     }
     function ok_state() {
         id_pwpad_input_text.text = pwpad_input_tip_ok
         after_input_state()
-        if (pwpad_func_onok != null) {
-            pwpad_func_onok()
+        if (func_ok != null) {
+            Util.z.log(log_nm, "pwpad_func_ok is run")
+            func_ok()
+        } else {
+            Util.z.log(log_nm, "pwpad_func_ok is empty")
         }
     }
     function after_input_state() {
