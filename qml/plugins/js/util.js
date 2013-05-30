@@ -2,7 +2,7 @@ var _log_nm_ = "qml"
 
 var z = {
     log: function (nm, text) {
-        console.log((z.isBlank(nm) ? _log_nm_ : nm) + " : " + text)
+        console.debug((z.isBlank(nm) ? _log_nm_ : nm) + " : " + text)
     },
     isBlank: function (str) {
         if (str == undefined || str == null) {
