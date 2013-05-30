@@ -1,12 +1,12 @@
 import QtQuick 1.1
-import "js/util.js" as Util
-import "js/plugins/passwordpad/init.js" as PwPadInit
+import "plugins/js/util.js" as Util
+import "plugins/js/passwordpad/init.js" as PwPadInit
 
 Rectangle {
     id: id_pwpad
     property string log_nm: "pwpad"
-    property string pic_path: "pics/"
-    property string pic_btns: pic_path + "plugins/passwordpad/btns/"
+    property string pic_path: "plugins/img/"
+    property string pic_btns: pic_path + "passwordpad/btns/"
     property bool pwpad_btn_ava: true // 按钮是否可用
     property bool pwpad_input_do: false // 是不是输入过了
     property string pwpad_input_tip_init: "请输入密码"
