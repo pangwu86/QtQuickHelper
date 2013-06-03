@@ -24,27 +24,26 @@ Rectangle {
     function err_state() {
         id_pwpad_input_text.text = pwpad_input_tip_err
         after_input_state()
-        if (func_cancel != null) {
-            Util.z.log(log_nm, "pwpad_func_cancel is run")
-            func_cancel()
-        } else {
-            Util.z.log(log_nm, "pwpad_func_cancel is empty")
-        }
+        Util.z.log(log_nm, "func_cancel is called")
+        func_cancel()
     }
     function ok_state() {
         id_pwpad_input_text.text = pwpad_input_tip_ok
         after_input_state()
-        if (func_ok != null) {
-            Util.z.log(log_nm, "pwpad_func_ok is run")
-            func_ok()
-        } else {
-            Util.z.log(log_nm, "pwpad_func_ok is empty")
-        }
+        Util.z.log(log_nm, "func_ok is called")
+        func_ok()
     }
     function after_input_state() {
         id_pwpad_input_text.color = pwpad_input_color_red
         pwpad_btn_ava = false
         timer_pwpad_after_input.start()
+    }
+    // 提供两个模式的实现
+    function func_ok() {
+        Util.z.log(log_nm, "default func_ok")
+    }
+    function func_cancel() {
+        Util.z.log(log_nm, "default func_cancel")
     }
     Timer {
         id: timer_pwpad_after_input

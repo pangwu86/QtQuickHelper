@@ -1,5 +1,3 @@
-var func_ok
-var func_cancel
 
 // 被按下时候触发的事件
 var numberPressed = function () {
