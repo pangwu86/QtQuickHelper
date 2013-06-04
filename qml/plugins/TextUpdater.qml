@@ -12,7 +12,6 @@ Item {
     clip: true
     Text {
         id: id_text_updater_txt
-        width: parent.width
         height: parent.height
         anchors.centerIn: parent
         color: text_color

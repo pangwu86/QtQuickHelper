@@ -27,8 +27,8 @@ Item {
     }
     Text {
         id: id_text_weather_txt
-        anchors.right: parent.right
-        width: parent.width
+        anchors.left: id_text_weather_pic.right
+        anchors.leftMargin: 20
         height: parent.height
         color: text_color
         font.pixelSize: text_size
