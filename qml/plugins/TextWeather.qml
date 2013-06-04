@@ -62,6 +62,6 @@ Item {
         }
         xmlhttp.open("GET", jsonurl)
         xmlhttp.send()
-        Util.z.log(log_nm, "get weather data : " + jsonurl)
+        Util.z.log(log_nm, "data from " + jsonurl)
     }
 }

@@ -11,8 +11,9 @@ _weekday_[6] = "六"
 
 var z = {
     log: function (nm, text) {
-        console.debug(z.now() + " " + (z.isBlank(
-                                           nm) ? _log_nm_ : nm) + " : " + text)
+        var tnm = (z.isBlank(nm) ? _log_nm_ : nm)
+        var tnm2 = z.stringFill(tnm, 8, " ", false)
+        console.debug(z.now() + " " + tnm2 + " : " + text)
     },
     now: function (ms) {
         // 返回yyyy-MM-dd_hh:mm:ss:sss格式化日期时间字符串
@@ -20,31 +21,37 @@ var z = {
     },
     nowTime: function (ms) {
         var cdate = new Date()
-        return z.numberFormat(cdate.getHours(), 2) + ":" + z.numberFormat(
-                    cdate.getMinutes(), 2) + ":" + z.numberFormat(
+        return z.numberFillZero(cdate.getHours(), 2) + ":" + z.numberFillZero(
+                    cdate.getMinutes(), 2) + ":" + z.numberFillZero(
                     cdate.getSeconds(),
                     2) + (ms ? ":" + cdate.getMilliseconds() : "")
     },
     nowDate: function () {
         var cdate = new Date()
-        return cdate.getFullYear() + "-" + z.numberFormat(
+        return cdate.getFullYear() + "-" + z.numberFillZero(
                     cdate.getMonth() + 1,
-                    2) + "-" + z.numberFormat(cdate.getDate(), 2)
+                    2) + "-" + z.numberFillZero(cdate.getDate(), 2)
     },
     nowDateCN: function () {
         var cdate = new Date()
-        return cdate.getFullYear() + "年" + z.numberFormat(
-                    cdate.getMonth() + 1, 2) + "月" + z.numberFormat(
+        return cdate.getFullYear() + "年" + z.numberFillZero(
+                    cdate.getMonth() + 1, 2) + "月" + z.numberFillZero(
                     cdate.getDate(), 2) + "日 周" + _weekday_[cdate.getDay()]
     },
-    numberFormat: function (num, length) {
-        var nstr = num + ""
-        if (nstr.length < length) {
-            for (var i = nstr.length; i < length; i++) {
-                nstr = "0" + nstr
+    numberFillZero: function (num, length) {
+        return z.stringFill(num + "", length, "0", false)
+    },
+    stringFill: function (curstr, tarlength, fillstr, append) {
+        if (curstr.length < tarlength) {
+            for (var i = curstr.length; i < tarlength; i++) {
+                if (append) {
+                    curstr = curstr + fillstr
+                } else {
+                    curstr = fillstr + curstr
+                }
             }
         }
-        return nstr
+        return curstr
     },
     isBlank: function (str) {
         if (str == undefined || str == null) {
