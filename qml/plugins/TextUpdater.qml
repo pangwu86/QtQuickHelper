@@ -4,7 +4,7 @@ Item {
     id: id_text_updater
     width: text_width
     height: text_height
-    property int text_width: 130
+    property int text_width: 100
     property int text_height: 40
     property string text_color: "#FFF"
     property string text_size: text_height / 2
