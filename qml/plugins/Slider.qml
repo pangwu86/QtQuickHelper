@@ -1,10 +1,11 @@
 import QtQuick 1.1
 import "js/util.js" as Util
 
-Rectangle {
+Item {
     id: id_slider
     property string log_nm: "slider"
     property int current_index: 0
+    property int slider_start: 0
     property int slider_count: 0
     property int slider_show_count: 1
     property string slider_type: "jpg"
@@ -32,7 +33,7 @@ Rectangle {
             Image {
                 width: slider_width
                 height: slider_height
-                source: slider_pic_path + "" + index + "." + slider_type
+                source: slider_pic_path + "" + (slider_start + index) + "." + slider_type
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
