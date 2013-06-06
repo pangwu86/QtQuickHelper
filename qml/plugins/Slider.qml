@@ -17,9 +17,10 @@ Item {
     property bool slider_clip: false
     property int slider_offset_x: 0
     property int slider_offset_y: 0
-    property real slider_scale_min : 1.0
-    property real slider_scale_max : 1.0
+    property real slider_scale_min: 1.0
+    property real slider_scale_max: 1.0
     property real slider_scale_opactiy: 1.0
+    property int slider_radius: 0
     property bool slider_auto_change: false
     property int slider_auto_interval: 2000
     property bool slider_horizontal: true
@@ -38,11 +39,14 @@ Item {
         flickDeceleration: 1000
         spacing: slider_spacing
         clip: !slider_clip
-        delegate: Item {
+        delegate: Rectangle {
             id: id_slider_img
             clip: slider_clip
             width: slider_width
             height: slider_height
+            color: "#00FFFFFF"
+            smooth: true
+            radius: slider_radius
             Image {
                 anchors.left: parent.left
                 anchors.top: parent.top
@@ -54,7 +58,7 @@ Item {
                         > 0 ? slider_list[index] : (slider_pic_path + "" + (slider_start + index)
                                                     + "." + slider_type)
                 smooth: true
-                opacity : slider_scale_opactiy
+                opacity: slider_scale_opactiy
                 MouseArea {
                     anchors.fill: parent
                     hoverEnabled: true
