@@ -5,6 +5,7 @@ Item {
     id: id_slider
     property string log_nm: "slider"
     property int current_index: 0
+    property int slider_sindex: 0
     property int slider_start: 0
     property int slider_count: 0
     property int slider_spacing: 0
@@ -97,11 +98,10 @@ Item {
             }
         }
         // 初始化
-        function list_init_state() {
+        function list_init_state(sindex) {
             Util.z.log(log_nm, "list reset")
-            contentX = 0
-            contentY = 0
-            current_index = 0
+            current_index = sindex
+            change_position()
         }
         // 改变位置
         function change_position() {
@@ -142,8 +142,17 @@ Item {
         return (current_index - 1) >= 0
     }
     // 移动
-    function init_state() {
-        id_slider_list.list_init_state()
+    function init_state(sindex) {
+        if (sindex === null) {
+            sindex = 0
+        }
+        if (sindex == undefined) {
+            sindex = 0
+        }
+        if (sindex >= slider_count) {
+            sindex = slider_count - 1
+        }
+        id_slider_list.list_init_state(sindex)
         if (slider_auto_change) {
             id_slider_auto_changer.restart()
         }
@@ -168,7 +177,7 @@ Item {
             if (check_next()) {
                 next_pic()
             } else {
-                init_state()
+                init_state(slider_sindex)
             }
             Util.z.log(log_nm,
                        "change pic in " + slider_auto_interval + "ms later")
@@ -186,6 +195,6 @@ Item {
         if (slider_auto_change) {
             id_slider_auto_changer.start()
         }
-        init_state()
+        init_state(slider_sindex)
     }
 }
