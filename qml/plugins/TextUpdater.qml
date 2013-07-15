@@ -7,7 +7,8 @@ Item {
     property int text_width: 100
     property int text_height: 40
     property string text_color: "#FFF"
-    property string text_size: text_height / 2
+    property int text_size: text_height / 2
+    property bool text_bold: false
     property int update_interval: 1 * 1000
     clip: true
     Text {
@@ -16,6 +17,7 @@ Item {
         anchors.centerIn: parent
         color: text_color
         font.pixelSize: text_size
+        font.bold: text_bold
         text: "loading..."
         smooth: true
         verticalAlignment: Text.AlignVCenter
