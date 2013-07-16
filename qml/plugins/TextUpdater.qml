@@ -2,7 +2,7 @@ import QtQuick 1.1
 
 Item {
     id: id_text_updater
-    width: text_width
+    width: id_text_updater_txt.width
     height: text_height
     property int text_width: 100
     property int text_height: 40
@@ -12,6 +12,7 @@ Item {
     property int update_interval: 1 * 1000
     clip: true
     Text {
+        wrapMode: Text.Wrap
         id: id_text_updater_txt
         height: parent.height
         anchors.centerIn: parent
