@@ -1,3 +1,11 @@
+
+# Content 目录
+
+1. [English Instruction](#what-is-QtQuickHelper)
+2. [中文说明](#什么是QtQuickHelper)
+
+---
+
 ## What is QtQuickHelper
 
 provide some utility functions and templates to help you quickly develop qtquick project.
@@ -13,8 +21,7 @@ see "example.qml" to get more usage details.
 video-demo : ...
 
 
-
-
+---
 
 ## 什么是QtQuickHelper
 
@@ -26,6 +33,6 @@ video-demo : ...
 
 具体操作请看示例
 
-## 给你举个栗子看
+## 给你举个"栗子"看
 
 video-demo : …
