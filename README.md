@@ -1,8 +1,8 @@
 
 # Content 目录
 
-1. [English Instruction](#What-is-QtQuickHelper)
-2. [中文说明](#什么是QtQuickHelper)
+1. [English Instruction](#what-is-qtquickhelper)
+2. [中文说明](#什么是qtquickhelper)
 
 ---
 
