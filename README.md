@@ -12,9 +12,9 @@ provide some utility functions and templates to help you quickly develop qtquick
 
 ## How to use it
 
-first import "plugin" directory to your project, and then use it.
+first import "plugins" directory to your project, and then use it.
 
-see "example.qml" to get more usage details. 
+see "qml/example.qml" to get more usage details. 
 
 ## Show u a demo
 
@@ -29,9 +29,9 @@ video-demo : ...
 
 ## 怎么使用它
 
-通过导入plugin目录到你的工程中, 然后按需使用就好了
+通过导入"plugins"目录到你的工程中, 然后按需使用就好了
 
-具体使用细节请查看"example.qml"
+具体使用细节请查看"qml/example.qml"
 
 ## 给你举个"栗子"看
 
