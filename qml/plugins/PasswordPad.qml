@@ -3,41 +3,42 @@ import "js/util.js" as Util
 import "js/passwordpad.js" as PwPad
 
 Rectangle {
-    id: id_pwpad
+    id: idc_pwpad
     property string log_nm: "pwpad"
-    property string pic_path: "img/"
-    property string pic_btns: pic_path + "passwordpad/"
+    property string pwpad_pic: "img/passwordpad/"
     property bool pwpad_btn_ava: true // 按钮是否可用
     property bool pwpad_input_do: false // 是不是输入过了
     property string pwpad_input_tip_init: "请输入密码"
     property string pwpad_input_tip_err: "密码错误!"
     property string pwpad_input_tip_ok: "密码正确!"
-    property string pwpad_input_val: "94518" // 真正的密码
+    property string pwpad_input_val: "12345" // 真正的密码
     property string pwpad_input_color: "#7c7c7c"
-    property string pwpad_input_color_red: "#AA0000"
+    property string pwpad_input_color_error: "#AA0000"
+
     function init_state() {
         pwpad_btn_ava = true
         pwpad_input_do = false
-        id_pwpad_input_text.text = pwpad_input_tip_init
-        id_pwpad_input_text.color = pwpad_input_color
+        idc_pwpad_input_text.text = pwpad_input_tip_init
+        idc_pwpad_input_text.color = pwpad_input_color
     }
     function err_state() {
-        id_pwpad_input_text.text = pwpad_input_tip_err
+        idc_pwpad_input_text.text = pwpad_input_tip_err
         after_input_state()
         Util.z.log(log_nm, "func_cancel is called")
         func_cancel()
     }
     function ok_state() {
-        id_pwpad_input_text.text = pwpad_input_tip_ok
+        idc_pwpad_input_text.text = pwpad_input_tip_ok
         after_input_state()
         Util.z.log(log_nm, "func_ok is called")
         func_ok()
     }
     function after_input_state() {
-        id_pwpad_input_text.color = pwpad_input_color_red
+        idc_pwpad_input_text.color = pwpad_input_color_error
         pwpad_btn_ava = false
-        timer_pwpad_after_input.start()
+        idt_pwpad_after_input.start()
     }
+
     // 提供两个模式的实现
     function func_ok() {
         Util.z.log(log_nm, "default func_ok")
@@ -45,14 +46,16 @@ Rectangle {
     function func_cancel() {
         Util.z.log(log_nm, "default func_cancel")
     }
+
     Timer {
-        id: timer_pwpad_after_input
+        id: idt_pwpad_after_input
         interval: 2000
         repeat: false
         onTriggered: {
             init_state()
         }
     }
+
     width: 240
     height: 370
     radius: 15
@@ -64,20 +67,16 @@ Rectangle {
             init_state()
         }
     }
-    Component.onCompleted: {
-        init_state()
-        Util.z.log(log_nm, "i'm ready")
-    }
 
     // 输入框部分
     Item {
-        id: id_pwpad_input
+        id: idc_pwpad_input
         x: 24
         y: 10
         width: 192
         height: 50
         Text {
-            id: id_pwpad_input_text
+            id: idc_pwpad_input_text
             x: 10
             width: parent.width - 20
             height: parent.height
@@ -98,12 +97,12 @@ Rectangle {
 
     // 按钮部分
     Item {
-        id: id_pwpad_btns
+        id: idc_pwpad_btns
         width: 212
         height: 286
-        anchors.top: id_pwpad_input.bottom
+        anchors.top: idc_pwpad_input.bottom
         anchors.topMargin: 10
-        anchors.horizontalCenter: id_pwpad_input.horizontalCenter
+        anchors.horizontalCenter: idc_pwpad_input.horizontalCenter
 
         Grid {
             flow: Flow.LeftToRight
@@ -115,11 +114,11 @@ Rectangle {
                 Image {
                     width: 64
                     height: 64
-                    source: pic_btns + PwPad.btn_pic_list[index].init_pic
+                    source: pwpad_pic + PwPad.btn_pic_list[index].init_pic
                     MouseArea {
                         anchors.fill: parent
                         onPressed: {
-                            parent.source = pic_btns + PwPad.btn_pic_list[index].press_pic
+                            parent.source = pwpad_pic + PwPad.btn_pic_list[index].press_pic
                         }
                         onReleased: {
                             if (pwpad_btn_ava) {
@@ -127,11 +126,17 @@ Rectangle {
                                            "press : " + PwPad.btn_pic_list[index].press_num)
                                 PwPad.btn_pic_list[index].press_func()
                             }
-                            parent.source = pic_btns + PwPad.btn_pic_list[index].init_pic
+                            parent.source = pwpad_pic + PwPad.btn_pic_list[index].init_pic
                         }
                     }
                 }
             }
         }
+    }
+
+
+    Component.onCompleted: {
+        init_state()
+        Util.z.log(log_nm, "i'm ready")
     }
 }

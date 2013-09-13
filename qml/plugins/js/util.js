@@ -12,7 +12,7 @@ _weekday_[6] = "六"
 var z = {
     log: function (nm, text) {
         var tnm = (z.isBlank(nm) ? _log_nm_ : nm)
-        var tnm2 = z.stringFill(tnm, 12, " ", false)
+        var tnm2 = z.stringFill(tnm, 5, " ", false)
         console.debug(z.now() + " " + tnm2 + " : " + text)
     },
     now: function (ms) {

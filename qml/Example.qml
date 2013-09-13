@@ -10,18 +10,21 @@ Rectangle {
         width: 600
         height: 150
         anchors.horizontalCenter: parent.horizontalCenter
-        y: (idc_main.height / 2 ) - 100
+        y: (idc_main.height / 2) - 100
         um_text_visible: true
+        um_text_spacing: 10
         um_texts: [{
                 text: "Welcome to QtQuickHepler",
-                size: 35,
+                size: 40,
                 bold: true
             }, {
                 text: "author: pangwu86@gmail.com",
-                size: 18
+                size: 15
             }, {
                 text: "http://github.com/pangwu86/QtQuickHepler",
                 size: 18
             }]
+    }
+    PasswordPad {
     }
 }

@@ -2,32 +2,32 @@
 // 被按下时候触发的事件
 var numberPressed = function () {
     // 已经有了文字
-    if (id_pwpad.pwpad_input_do) {
-        id_pwpad_input_text.text = id_pwpad_input_text.text + this.press_num
+    if (idc_pwpad.pwpad_input_do) {
+        idc_pwpad_input_text.text = idc_pwpad_input_text.text + this.press_num
     } else {
-        id_pwpad_input_text.text = this.press_num
-        id_pwpad.pwpad_input_do = true
+        idc_pwpad_input_text.text = this.press_num
+        idc_pwpad.pwpad_input_do = true
     }
 }
 
 // 被按下时候触发的事件
 var okPressed = function () {
     Util.z.log(log_nm, "check input")
-    var passcheck = (id_pwpad_input_text.text == id_pwpad.pwpad_input_val)
+    var passcheck = (idc_pwpad_input_text.text == idc_pwpad.pwpad_input_val)
     Util.z.log(log_nm,
-               "input is " + id_pwpad_input_text.text + " ,password is " + id_pwpad.pwpad_input_val
+               "input is " + idc_pwpad_input_text.text + " ,password is " + idc_pwpad.pwpad_input_val
                + " ,check result is [" + (passcheck ? "success" : "fail") + "]")
     if (passcheck) {
-        id_pwpad.ok_state()
+        idc_pwpad.ok_state()
     } else {
-        id_pwpad.err_state()
+        idc_pwpad.err_state()
     }
 }
 
 // 被按下时候触发的事件
 var cancelPressed = function () {
     Util.z.log(log_nm, "clear input")
-    id_pwpad.init_state()
+    idc_pwpad.init_state()
 }
 
 // 数字列表
