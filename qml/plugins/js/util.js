@@ -1,4 +1,4 @@
-var _log_nm_ = "qml"
+var _log_nm_ = "qtquickhelper"
 
 var _weekday_ = []
 _weekday_[0] = "日"
@@ -54,15 +54,60 @@ var z = {
         return curstr
     },
     isBlank: function (str) {
-        if (str == undefined || str == null) {
+        if (z.isNull(str)) {
             return true
         }
-        if (str.length == 0) {
+        if (str.length === 0) {
             return true
         }
         if (/^\s*$/.test(str)) {
             return true
         }
         return false
+    },
+    cbgcolor: function(bgcolor, defbgcolor) {
+        return z.ccolor(bgcolor, "#00000000")
+    },
+    ccolor: function (color, defcolor) {
+        if (z.notNull(color) && !z.isBlank(color)) {
+            return color
+        }
+        if (z.notNull(defcolor) && !z.isBlank(defcolor)) {
+            return defcolor
+        }
+        return "#FFF"
+    },
+    cbold: function (bold) {
+        if (z.notNull(bold)) {
+            return bold
+        }
+        return false
+    },
+    csize: function (size, defsize) {
+        if (z.notNull(size)) {
+            return size
+        }
+        if (z.notNull(defsize)) {
+            return defsize
+        }
+        return 12
+    },
+    ctext: function (text, deftext) {
+        if (z.notNull(text)) {
+            return text
+        }
+        if (z.notNull(deftext)) {
+            return deftext
+        }
+        return ""
+    },
+    isNull: function (obj) {
+        if (obj === undefined || obj === null) {
+            return true
+        }
+        return false
+    },
+    notNull: function (obj) {
+        return !z.isNull(obj)
     }
 }

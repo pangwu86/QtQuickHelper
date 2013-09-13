@@ -1,12 +1,12 @@
 import QtQuick 1.1
 import "js/util.js" as Util
-import "js/passwordpad/init.js" as PwPadInit
+import "js/passwordpad.js" as PwPad
 
 Rectangle {
     id: id_pwpad
     property string log_nm: "pwpad"
     property string pic_path: "img/"
-    property string pic_btns: pic_path + "passwordpad/btns/"
+    property string pic_btns: pic_path + "passwordpad/"
     property bool pwpad_btn_ava: true // 按钮是否可用
     property bool pwpad_input_do: false // 是不是输入过了
     property string pwpad_input_tip_init: "请输入密码"
@@ -111,23 +111,23 @@ Rectangle {
             spacing: 10
             // columnSpacing: 10
             Repeater {
-                model: PwPadInit.btn_pic_list
+                model: PwPad.btn_pic_list
                 Image {
                     width: 64
                     height: 64
-                    source: pic_btns + PwPadInit.btn_pic_list[index].init_pic
+                    source: pic_btns + PwPad.btn_pic_list[index].init_pic
                     MouseArea {
                         anchors.fill: parent
                         onPressed: {
-                            parent.source = pic_btns + PwPadInit.btn_pic_list[index].press_pic
+                            parent.source = pic_btns + PwPad.btn_pic_list[index].press_pic
                         }
                         onReleased: {
                             if (pwpad_btn_ava) {
                                 Util.z.log(log_nm,
-                                           "press : " + PwPadInit.btn_pic_list[index].press_num)
-                                PwPadInit.btn_pic_list[index].press_func()
+                                           "press : " + PwPad.btn_pic_list[index].press_num)
+                                PwPad.btn_pic_list[index].press_func()
                             }
-                            parent.source = pic_btns + PwPadInit.btn_pic_list[index].init_pic
+                            parent.source = pic_btns + PwPad.btn_pic_list[index].init_pic
                         }
                     }
                 }
