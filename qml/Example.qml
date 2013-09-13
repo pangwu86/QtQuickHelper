@@ -2,38 +2,26 @@ import QtQuick 1.1
 import "plugins"
 
 Rectangle {
+    id: idc_main
     width: 800
     height: 600
     color: "#000"
-//    Text {
-//        anchors.centerIn: parent
-//        text: "Welcome to QtQuickHepler"
-//        font.pixelSize: 30
-//        color: "#FFF"
-//    }
-//    MouseArea {
-//        anchors.fill: parent
-//        onClicked: {
-//        }
-//    }
-
     UpMessage {
         width: 600
-        height: 300
-        anchors.centerIn: parent
-        um_texts : [{
-                text : "Welcome to QtQuickHepler",
-                bgColor : "#888",
-                color : "#FFF",
-                size : 30,
-                bold : true
+        height: 150
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: (idc_main.height / 2 ) - 100
+        um_text_visible: true
+        um_texts: [{
+                text: "Welcome to QtQuickHepler",
+                size: 35,
+                bold: true
             }, {
-                text : "pangwu86@163.com",
-                bgColor : "#888",
-                color : "#FFF",
+                text: "author: pangwu86@gmail.com",
+                size: 18
             }, {
-                text : "see http://nutzam",
-                bgColor : "#888"
+                text: "http://github.com/pangwu86/QtQuickHepler",
+                size: 18
             }]
     }
 }
